@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Lezione2.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{71D8E81C-F5B1-429A-83DF-57873190F984}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Lezione2.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\Lezione2Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FC391BC4-B5E6-45AF-808C-FD78B930E3F5}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Lezione2">
+      <UniqueIdentifier>{69E502C7-DB4C-4624-8D3D-72B64BA09A54}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Lezione2\Lezione2.Build.cs">
+      <Filter>Source\Lezione2</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Lezione2\Lezione2.cpp">
+      <Filter>Source\Lezione2</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\Lezione2.h">
+      <Filter>Source\Lezione2</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Lezione2\Lezione2GameModeBase.cpp">
+      <Filter>Source\Lezione2</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\Lezione2GameModeBase.h">
+      <Filter>Source\Lezione2</Filter>
+    </ClInclude>
+    <Filter Include="Source\Lezione2\FP_FirstPerson">
+      <UniqueIdentifier>{FEBA119E-0508-49EA-B6CD-ACA96EE75C90}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPerson.h">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonCharacter.cpp">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonCharacter.h">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonGameMode.cpp">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonGameMode.h">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonHUD.cpp">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonHUD.h">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClInclude>
+    <Filter Include="Source\Lezione2\Private">
+      <UniqueIdentifier>{8768FC54-11B0-4A20-B527-FC363F373847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Lezione2\Private\FP_FirstPerson">
+      <UniqueIdentifier>{2A6CDABF-1056-4DBB-AC97-8A3ED0C98F58}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Lezione2\Private\FP_FirstPerson\HealthComponent.cpp">
+      <Filter>Source\Lezione2\Private\FP_FirstPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Lezione2\Private\FP_FirstPerson\Pickable.cpp">
+      <Filter>Source\Lezione2\Private\FP_FirstPerson</Filter>
+    </ClCompile>
+    <Filter Include="Source\Lezione2\Public">
+      <UniqueIdentifier>{F3C90307-86AC-4422-97D0-6F979FB28840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Lezione2\Public\FP_FirstPerson">
+      <UniqueIdentifier>{C8112C2E-B2BA-4FF0-BC5D-219515384293}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\Lezione2\Public\FP_FirstPerson\HealthComponent.h">
+      <Filter>Source\Lezione2\Public\FP_FirstPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Lezione2\Public\FP_FirstPerson\Pickable.h">
+      <Filter>Source\Lezione2\Public\FP_FirstPerson</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

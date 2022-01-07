@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Lezione2",
+			"Path": "C:\\Users\\miche\\Documents\\scuola\\fork\\LezioneUE2\\Lezione2\\Source\\Lezione2.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "Lezione2Editor",
+			"Path": "C:\\Users\\miche\\Documents\\scuola\\fork\\LezioneUE2\\Lezione2\\Source\\Lezione2Editor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
