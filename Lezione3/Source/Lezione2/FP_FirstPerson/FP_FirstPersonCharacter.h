@@ -32,6 +32,9 @@ class AFP_FirstPersonCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent;
+
 public:
 	AFP_FirstPersonCharacter();
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
@@ -40,7 +43,7 @@ public:
 
 	UFUNCTION()
 	void StampString();
-	
+
 	UPROPERTY(EditAnywhere, Category= Gameplay)
 	UHealthComponent* LifeManager;
 	
@@ -178,6 +181,7 @@ public:
 	FORCEINLINE class USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
-
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	FORCEINLINE class UHealthComponent* GetHealthComponent() const { return HealthComponent; }
 };
 

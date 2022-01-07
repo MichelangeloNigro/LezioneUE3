@@ -9,6 +9,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class UHealthComponent;
 #ifdef LEZIONE2_FP_FirstPersonCharacter_generated_h
 #error "FP_FirstPersonCharacter.generated.h already included, missing '#pragma once' in FP_FirstPersonCharacter.h"
 #endif
@@ -39,11 +40,13 @@ static inline void FPLayerEventTwo_DelegateWrapper(const FMulticastScriptDelegat
 #define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_SPARSE_DATA
 #define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execStampString);
 
 
 #define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execStampString);
 
 
@@ -101,7 +104,8 @@ public: \
 #define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__Mesh1P() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, Mesh1P); } \
 	FORCEINLINE static uint32 __PPO__FP_Gun() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, FP_Gun); } \
-	FORCEINLINE static uint32 __PPO__FirstPersonCameraComponent() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, FirstPersonCameraComponent); }
+	FORCEINLINE static uint32 __PPO__FirstPersonCameraComponent() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, FirstPersonCameraComponent); } \
+	FORCEINLINE static uint32 __PPO__HealthComponent() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, HealthComponent); }
 
 
 #define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_18_PROLOG \

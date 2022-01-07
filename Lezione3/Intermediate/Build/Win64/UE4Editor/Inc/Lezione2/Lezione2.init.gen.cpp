@@ -12,6 +12,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeLezione2_init() {}
 	LEZIONE2_API UFunction* Z_Construct_UDelegateFunction_Lezione2_HealthEvent__DelegateSignature();
+	LEZIONE2_API UFunction* Z_Construct_UDelegateFunction_Lezione2_GameStateEnemy__DelegateSignature();
 	LEZIONE2_API UFunction* Z_Construct_UDelegateFunction_Lezione2_PLayerEventTwo__DelegateSignature();
 	LEZIONE2_API UFunction* Z_Construct_UDelegateFunction_Lezione2_ReloadEvent__DelegateSignature();
 	UPackage* Z_Construct_UPackage__Script_Lezione2()
@@ -21,6 +22,7 @@ void EmptyLinkFunctionForGeneratedCodeLezione2_init() {}
 		{
 			static UObject* (*const SingletonFuncArray[])() = {
 				(UObject* (*)())Z_Construct_UDelegateFunction_Lezione2_HealthEvent__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_Lezione2_GameStateEnemy__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_Lezione2_PLayerEventTwo__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_Lezione2_ReloadEvent__DelegateSignature,
 			};
@@ -29,8 +31,8 @@ void EmptyLinkFunctionForGeneratedCodeLezione2_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x7F2477D5,
-				0xC3B8CBF5,
+				0x1D3B1041,
+				0x95DB96B1,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);
