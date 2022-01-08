@@ -573,7 +573,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent = { "HealthComponent", nullptr, (EPropertyFlags)0x00100000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, HealthComponent), Z_Construct_UClass_UHealthComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent = { "HealthComponent", nullptr, (EPropertyFlags)0x00100000000a000d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, HealthComponent), Z_Construct_UClass_UHealthComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_HealthComponent_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_PathToPatrol_MetaData[] = {
 		{ "Category", "Path" },
@@ -687,7 +687,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEnemy, 2109218282);
+	IMPLEMENT_CLASS(AEnemy, 1931736436);
 	template<> LEZIONE2_API UClass* StaticClass<AEnemy>()
 	{
 		return AEnemy::StaticClass();

@@ -64,7 +64,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* WeaponMesh;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health", meta = (AllowPrivateAccess = "true"))
 	UHealthComponent* HealthComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Path")

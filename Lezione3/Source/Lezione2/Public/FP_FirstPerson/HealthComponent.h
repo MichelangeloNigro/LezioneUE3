@@ -15,9 +15,9 @@ class LEZIONE2_API UHealthComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UHealthComponent();
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category= Gameplay)
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	float maxLife;
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category= Gameplay)
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
 	float currentLife;
 
 	UPROPERTY(BlueprintAssignable)

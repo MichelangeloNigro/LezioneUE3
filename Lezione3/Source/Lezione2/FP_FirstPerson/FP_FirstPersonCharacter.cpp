@@ -19,20 +19,21 @@ DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 void AFP_FirstPersonCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	LifeManager = Cast<UHealthComponent>(GetComponentByClass(UHealthComponent::StaticClass())) ;
-	check(LifeManager);
-	if (IsValid(LifeManager))
+	HealthComponent = Cast<UHealthComponent>(GetComponentByClass(UHealthComponent::StaticClass()));
+	check(HealthComponent);
+	if (IsValid(HealthComponent))
 	{
-		LifeManager->OnTakeDamage.AddDynamic(this, &AFP_FirstPersonCharacter::StampString);
+		HealthComponent->OnTakeDamage.AddDynamic(this, &AFP_FirstPersonCharacter::StampString);
 	}
-	CurrentAmmo=MaxAmmo;
+	setWeapon(WeaponSlot);
 }
+
 void AFP_FirstPersonCharacter::StampString()
 {
 	//not raised??
-	GEngine->AddOnScreenDebugMessage(-1,6.f, FColor::Red,"Che Male, vita rimanente "+FString::FromInt(LifeManager->currentLife));
-
+	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red,"Che Male, vita rimanente " + FString::FromInt(HealthComponent->currentLife));
 }
+
 //////////////////////////////////////////////////////////////////////////
 // AFP_FirstPersonCharacter
 
@@ -50,25 +51,23 @@ AFP_FirstPersonCharacter::AFP_FirstPersonCharacter()
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(0, 0, 64.f)); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
-	
+
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
-	Mesh1P->SetOnlyOwnerSee(true);				// Set so only owner can see mesh
-	Mesh1P->SetupAttachment(FirstPersonCameraComponent);	// Attach mesh to FirstPersonCameraComponent
-	Mesh1P->bCastDynamicShadow = false;			// Disallow mesh to cast dynamic shadows
-	Mesh1P->CastShadow = false;				// Disallow mesh to cast other shadows
+	Mesh1P->SetOnlyOwnerSee(true); // Set so only owner can see mesh
+	Mesh1P->SetupAttachment(FirstPersonCameraComponent); // Attach mesh to FirstPersonCameraComponent
+	Mesh1P->bCastDynamicShadow = false; // Disallow mesh to cast dynamic shadows
+	Mesh1P->CastShadow = false; // Disallow mesh to cast other shadows
 
 	// Create a gun mesh component
 	FP_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
-	FP_Gun->SetOnlyOwnerSee(true);			// Only the owning player will see this mesh
-	FP_Gun->bCastDynamicShadow = false;		// Disallow mesh to cast dynamic shadows
-	FP_Gun->CastShadow = false;			// Disallow mesh to cast other shadows
+	FP_Gun->SetOnlyOwnerSee(true); // Only the owning player will see this mesh
+	FP_Gun->bCastDynamicShadow = false; // Disallow mesh to cast dynamic shadows
+	FP_Gun->CastShadow = false; // Disallow mesh to cast other shadows
 	FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
 
 	// Set weapon damage and range
-	WeaponRange = 5000.0f;
-	WeaponDamage = 500000.0f;
-
+	
 	// Default offset from the character location for projectiles to spawn
 	GunOffset = FVector(100.0f, 30.0f, 10.0f);
 
@@ -83,24 +82,24 @@ void AFP_FirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 {
 	// set up gameplay key bindings
 	check(PlayerInputComponent);
-	
+
 	// Set up gameplay key bindings
 
 	// Bind jump events
-	PlayerInputComponent->BindAction("Reload",IE_Pressed,this, &AFP_FirstPersonCharacter::Reload);
+	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &AFP_FirstPersonCharacter::reloadTimer);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	
+
 	// Bind fire event
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFP_FirstPersonCharacter::OnFire);
-	
+
 	// Attempt to enable touch screen movement
 	TryEnableTouchscreenMovement(PlayerInputComponent);
 
 	// Bind movement events
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFP_FirstPersonCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFP_FirstPersonCharacter::MoveRight);
-	
+
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
@@ -112,8 +111,16 @@ void AFP_FirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 void AFP_FirstPersonCharacter::OnFire()
 {
-	GEngine->AddOnScreenDebugMessage(-1,6.f, FColor::Red,FString::FromInt(CurrentAmmo));
-	if(CurrentAmmo>0){
+	// if (WeaponSlot.IsAutomatic)
+	// {
+	// 	while ()
+	// 	{
+	// 		
+	// 	}
+	// }
+	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red, FString::FromInt(CurrentAmmo));
+	if (CurrentAmmo > 0)
+	{
 		CurrentAmmo--;
 
 		// Play a sound if there is one
@@ -135,7 +142,7 @@ void AFP_FirstPersonCharacter::OnFire()
 
 		// Now send a trace from the end of our gun to see if we should hit anything
 		APlayerController* PlayerController = Cast<APlayerController>(GetController());
-	
+
 		FVector ShootDir = FVector::ZeroVector;
 		FVector StartTrace = FVector::ZeroVector;
 
@@ -159,8 +166,12 @@ void AFP_FirstPersonCharacter::OnFire()
 
 		// Deal with impact
 		AActor* DamagedActor = Impact.GetActor();
-		PlayerHasShoot(DamagedActor,Impact.bBlockingHit);
+		PlayerHasShoot(DamagedActor, Impact.bBlockingHit);
 		//OnHitActor.Broadcast(DamagedActor,Impact.bBlockingHit);
+	}
+	else if (CurrentAmmo == 0)
+	{
+		reloadTimer();
 	}
 }
 
@@ -169,12 +180,12 @@ void AFP_FirstPersonCharacter::BeginTouch(const ETouchIndex::Type FingerIndex, c
 	// If touch is already pressed check the index. If it is not the same as the current touch assume a second touch and thus we want to fire
 	if (TouchItem.bIsPressed == true)
 	{
-		if( TouchItem.FingerIndex != FingerIndex)
+		if (TouchItem.FingerIndex != FingerIndex)
 		{
-			OnFire();			
+			OnFire();
 		}
 	}
-	else 
+	else
 	{
 		// Cache the finger index and touch location and flag we are processing a touch
 		TouchItem.bIsPressed = true;
@@ -187,7 +198,7 @@ void AFP_FirstPersonCharacter::BeginTouch(const ETouchIndex::Type FingerIndex, c
 void AFP_FirstPersonCharacter::EndTouch(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	// If we didn't record the start event do nothing, or this is a different index
-	if((TouchItem.bIsPressed == false) || ( TouchItem.FingerIndex != FingerIndex) )
+	if ((TouchItem.bIsPressed == false) || (TouchItem.FingerIndex != FingerIndex))
 	{
 		return;
 	}
@@ -225,7 +236,7 @@ void AFP_FirstPersonCharacter::TouchUpdate(const ETouchIndex::Type FingerIndex, 
 				if (FMath::Abs(ScaledDelta.Y) >= (4.0f / ScreenSize.Y))
 				{
 					TouchItem.bMoved = true;
-					float Value = ScaledDelta.Y* BaseTurnRate;
+					float Value = ScaledDelta.Y * BaseTurnRate;
 					AddControllerPitchInput(Value);
 				}
 				TouchItem.Location = Location;
@@ -279,15 +290,38 @@ FHitResult AFP_FirstPersonCharacter::WeaponTrace(const FVector& StartTrace, cons
 
 void AFP_FirstPersonCharacter::Reload()
 {
-	CurrentAmmo=MaxAmmo;
+	CurrentAmmo = MaxAmmo;
+	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red, "reloading");
+	IsReloading = false;
 }
 
+void AFP_FirstPersonCharacter::reloadTimer()
+{
+	if (CurrentAmmo==MaxAmmo)
+	{
+		return;
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red, "started");
+	if (!IsReloading)
+	{
+		GetWorldTimerManager().SetTimer(UnusedHandle, this, &AFP_FirstPersonCharacter::Reload, reloadTime, false);
+	}
+	IsReloading = true;
+}
 
+void AFP_FirstPersonCharacter::setWeapon(FWeaponSlot WeaponToCopy)
+{
+	WeaponRange = WeaponToCopy.Range;
+	WeaponDamage = WeaponToCopy.Damage;
+	MaxAmmo=WeaponToCopy.MagCapacity;
+	CurrentAmmo=WeaponToCopy.MagCapacity;
+	IsReloading = false;
+}
 
 
 void AFP_FirstPersonCharacter::TryEnableTouchscreenMovement(UInputComponent* PlayerInputComponent)
 {
 	PlayerInputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AFP_FirstPersonCharacter::BeginTouch);
 	PlayerInputComponent->BindTouch(EInputEvent::IE_Released, this, &AFP_FirstPersonCharacter::EndTouch);
-	PlayerInputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AFP_FirstPersonCharacter::TouchUpdate);	
+	PlayerInputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AFP_FirstPersonCharacter::TouchUpdate);
 }

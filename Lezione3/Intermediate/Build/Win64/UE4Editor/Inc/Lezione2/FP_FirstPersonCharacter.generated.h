@@ -9,20 +9,19 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
-class UHealthComponent;
 #ifdef LEZIONE2_FP_FirstPersonCharacter_generated_h
 #error "FP_FirstPersonCharacter.generated.h already included, missing '#pragma once' in FP_FirstPersonCharacter.h"
 #endif
 #define LEZIONE2_FP_FirstPersonCharacter_generated_h
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_16_DELEGATE \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_17_DELEGATE \
 static inline void FReloadEvent_DelegateWrapper(const FMulticastScriptDelegate& ReloadEvent) \
 { \
 	ReloadEvent.ProcessMulticastDelegate<UObject>(NULL); \
 }
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_15_DELEGATE \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_16_DELEGATE \
 struct _Script_Lezione2_eventPLayerEventTwo_Parms \
 { \
 	AActor* HitActor; \
@@ -37,20 +36,18 @@ static inline void FPLayerEventTwo_DelegateWrapper(const FMulticastScriptDelegat
 }
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_SPARSE_DATA
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_SPARSE_DATA
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execStampString);
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execStampString);
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_EVENT_PARMS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_EVENT_PARMS \
 	struct FP_FirstPersonCharacter_eventPlayerHasShoot_Parms \
 	{ \
 		AActor* actor; \
@@ -58,8 +55,8 @@ static inline void FPLayerEventTwo_DelegateWrapper(const FMulticastScriptDelegat
 	};
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_CALLBACK_WRAPPERS
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_INCLASS_NO_PURE_DECLS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_CALLBACK_WRAPPERS
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAFP_FirstPersonCharacter(); \
 	friend struct Z_Construct_UClass_AFP_FirstPersonCharacter_Statics; \
@@ -68,7 +65,7 @@ public: \
 	DECLARE_SERIALIZER(AFP_FirstPersonCharacter)
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_INCLASS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_INCLASS \
 private: \
 	static void StaticRegisterNativesAFP_FirstPersonCharacter(); \
 	friend struct Z_Construct_UClass_AFP_FirstPersonCharacter_Statics; \
@@ -77,7 +74,7 @@ public: \
 	DECLARE_SERIALIZER(AFP_FirstPersonCharacter)
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_STANDARD_CONSTRUCTORS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AFP_FirstPersonCharacter(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AFP_FirstPersonCharacter) \
@@ -90,7 +87,7 @@ private: \
 public:
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_ENHANCED_CONSTRUCTORS \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AFP_FirstPersonCharacter(AFP_FirstPersonCharacter&&); \
@@ -101,39 +98,39 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AFP_FirstPersonCharacter)
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__Mesh1P() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, Mesh1P); } \
 	FORCEINLINE static uint32 __PPO__FP_Gun() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, FP_Gun); } \
 	FORCEINLINE static uint32 __PPO__FirstPersonCameraComponent() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, FirstPersonCameraComponent); } \
 	FORCEINLINE static uint32 __PPO__HealthComponent() { return STRUCT_OFFSET(AFP_FirstPersonCharacter, HealthComponent); }
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_18_PROLOG \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_EVENT_PARMS
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_19_PROLOG \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_EVENT_PARMS
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_GENERATED_BODY_LEGACY \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_SPARSE_DATA \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_CALLBACK_WRAPPERS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_INCLASS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_STANDARD_CONSTRUCTORS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_PRIVATE_PROPERTY_OFFSET \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_SPARSE_DATA \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_RPC_WRAPPERS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_CALLBACK_WRAPPERS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_INCLASS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_GENERATED_BODY \
+#define Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_SPARSE_DATA \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_CALLBACK_WRAPPERS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_INCLASS_NO_PURE_DECLS \
-	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_21_ENHANCED_CONSTRUCTORS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_PRIVATE_PROPERTY_OFFSET \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_SPARSE_DATA \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_CALLBACK_WRAPPERS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_INCLASS_NO_PURE_DECLS \
+	Lezione3_Source_Lezione2_FP_FirstPerson_FP_FirstPersonCharacter_h_22_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

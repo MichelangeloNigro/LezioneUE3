@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Enemy/Enemy.h"
 #include "FP_FirstPerson/HealthComponent.h"
 #include "GameFramework/Character.h"
 #include "FP_FirstPersonCharacter.generated.h"
@@ -40,18 +41,21 @@ public:
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseTurnRate;
-
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+	FTimerHandle UnusedHandle;
 	UFUNCTION()
 	void StampString();
-
-	UPROPERTY(EditAnywhere, Category= Gameplay)
-	UHealthComponent* LifeManager;
 	
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	FWeaponSlot WeaponSlot;
 	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
 	int MaxAmmo;
 	int CurrentAmmo;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+	bool IsReloading;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+	float reloadTime;
 	
 	UPROPERTY(BlueprintAssignable)
 	FPLayerEventTwo OnHitActor;
@@ -103,6 +107,8 @@ protected:
 	virtual void BeginPlay() override;
 
 	void Reload();
+	void reloadTimer();
+	void setWeapon(FWeaponSlot weapon);
 	/**
 	 * Called via input to turn at a given rate.
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
@@ -181,7 +187,6 @@ public:
 	FORCEINLINE class USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
-	UFUNCTION(BlueprintCallable, Category = "Health")
 	FORCEINLINE class UHealthComponent* GetHealthComponent() const { return HealthComponent; }
 };
 

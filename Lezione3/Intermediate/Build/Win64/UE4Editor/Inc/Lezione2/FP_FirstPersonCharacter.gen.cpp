@@ -20,9 +20,11 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 	LEZIONE2_API UClass* Z_Construct_UClass_AFP_FirstPersonCharacter_NoRegister();
 	LEZIONE2_API UClass* Z_Construct_UClass_AFP_FirstPersonCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
-	LEZIONE2_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
+	LEZIONE2_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
+	LEZIONE2_API UScriptStruct* Z_Construct_UScriptStruct_FWeaponSlot();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UAnimMontage_NoRegister();
@@ -90,13 +92,6 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	DEFINE_FUNCTION(AFP_FirstPersonCharacter::execGetHealthComponent)
-	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		*(UHealthComponent**)Z_Param__Result=P_THIS->GetHealthComponent();
-		P_NATIVE_END;
-	}
 	DEFINE_FUNCTION(AFP_FirstPersonCharacter::execStampString)
 	{
 		P_FINISH;
@@ -116,51 +111,9 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 	{
 		UClass* Class = AFP_FirstPersonCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
-			{ "GetHealthComponent", &AFP_FirstPersonCharacter::execGetHealthComponent },
 			{ "StampString", &AFP_FirstPersonCharacter::execStampString },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
-	}
-	struct Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics
-	{
-		struct FP_FirstPersonCharacter_eventGetHealthComponent_Parms
-		{
-			UHealthComponent* ReturnValue;
-		};
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ReturnValue_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::NewProp_ReturnValue_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000080588, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FP_FirstPersonCharacter_eventGetHealthComponent_Parms, ReturnValue), Z_Construct_UClass_UHealthComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::NewProp_ReturnValue_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::NewProp_ReturnValue_MetaData)) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::NewProp_ReturnValue,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::Function_MetaDataParams[] = {
-		{ "Category", "Health" },
-		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFP_FirstPersonCharacter, nullptr, "GetHealthComponent", nullptr, nullptr, sizeof(FP_FirstPersonCharacter_eventGetHealthComponent_Parms), Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent_Statics::FuncParams);
-		}
-		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics
 	{
@@ -254,13 +207,22 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_BaseTurnRate;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LifeManager_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_UnusedHandle_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_LifeManager;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_UnusedHandle;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MaxAmmo_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_WeaponSlot_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxAmmo;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_WeaponSlot;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_IsReloading_MetaData[];
+#endif
+		static void NewProp_IsReloading_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_IsReloading;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_reloadTime_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_reloadTime;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OnHitActor_MetaData[];
 #endif
@@ -298,7 +260,6 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Lezione2,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_GetHealthComponent, "GetHealthComponent" }, // 3571285856
 		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot, "PlayerHasShoot" }, // 1161968723
 		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_StampString, "StampString" }, // 1963413074
 	};
@@ -359,20 +320,37 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_BaseTurnRate = { "BaseTurnRate", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, BaseTurnRate), METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_BaseTurnRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_BaseTurnRate_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_LifeManager_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_UnusedHandle_MetaData[] = {
 		{ "Category", "Gameplay" },
-		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_LifeManager = { "LifeManager", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, LifeManager), Z_Construct_UClass_UHealthComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_LifeManager_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_LifeManager_MetaData)) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_UnusedHandle = { "UnusedHandle", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, UnusedHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_UnusedHandle_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_UnusedHandle_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_MaxAmmo_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_WeaponSlot_MetaData[] = {
+		{ "Category", "Weapon" },
+		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_WeaponSlot = { "WeaponSlot", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, WeaponSlot), Z_Construct_UScriptStruct_FWeaponSlot, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_WeaponSlot_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_WeaponSlot_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading_MetaData[] = {
 		{ "Category", "Gameplay" },
 		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_MaxAmmo = { "MaxAmmo", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, MaxAmmo), METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_MaxAmmo_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_MaxAmmo_MetaData)) };
+	void Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading_SetBit(void* Obj)
+	{
+		((AFP_FirstPersonCharacter*)Obj)->IsReloading = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading = { "IsReloading", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AFP_FirstPersonCharacter), &Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading_SetBit, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_reloadTime_MetaData[] = {
+		{ "Category", "Gameplay" },
+		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_reloadTime = { "reloadTime", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, reloadTime), METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_reloadTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_reloadTime_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_OnHitActor_MetaData[] = {
 		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
@@ -439,8 +417,10 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_FirstPersonCameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_HealthComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_BaseTurnRate,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_LifeManager,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_MaxAmmo,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_UnusedHandle,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_WeaponSlot,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_IsReloading,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_reloadTime,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_OnHitActor,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_BaseLookUpRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_GunOffset,
@@ -476,7 +456,7 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFP_FirstPersonCharacter, 430172300);
+	IMPLEMENT_CLASS(AFP_FirstPersonCharacter, 3445421967);
 	template<> LEZIONE2_API UClass* StaticClass<AFP_FirstPersonCharacter>()
 	{
 		return AFP_FirstPersonCharacter::StaticClass();

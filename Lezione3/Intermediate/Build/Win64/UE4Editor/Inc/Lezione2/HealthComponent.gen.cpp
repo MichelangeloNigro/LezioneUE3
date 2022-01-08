@@ -137,14 +137,14 @@ void EmptyLinkFunctionForGeneratedCodeHealthComponent() {}
 #endif
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UHealthComponent_Statics::NewProp_maxLife_MetaData[] = {
-		{ "Category", "Gameplay" },
+		{ "Category", "HealthComponent" },
 		{ "ModuleRelativePath", "Public/FP_FirstPerson/HealthComponent.h" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UHealthComponent_Statics::NewProp_maxLife = { "maxLife", nullptr, (EPropertyFlags)0x0010000000000015, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UHealthComponent, maxLife), METADATA_PARAMS(Z_Construct_UClass_UHealthComponent_Statics::NewProp_maxLife_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UHealthComponent_Statics::NewProp_maxLife_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UHealthComponent_Statics::NewProp_currentLife_MetaData[] = {
-		{ "Category", "Gameplay" },
+		{ "Category", "HealthComponent" },
 		{ "ModuleRelativePath", "Public/FP_FirstPerson/HealthComponent.h" },
 	};
 #endif
@@ -194,7 +194,7 @@ void EmptyLinkFunctionForGeneratedCodeHealthComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UHealthComponent, 2619620097);
+	IMPLEMENT_CLASS(UHealthComponent, 312841783);
 	template<> LEZIONE2_API UClass* StaticClass<UHealthComponent>()
 	{
 		return UHealthComponent::StaticClass();
