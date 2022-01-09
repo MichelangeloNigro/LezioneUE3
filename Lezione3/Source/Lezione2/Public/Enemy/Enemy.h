@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "EnemyPath.h"
+#include "Components/BoxComponent.h"
 #include "FP_FirstPerson/HealthComponent.h"
 #include "GameFramework/Character.h"
 #include "Enemy.generated.h"
@@ -60,7 +61,13 @@ class LEZIONE2_API AEnemy : public ACharacter
 GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="Settings")
+	TSubclassOf<AActor> SensedClass= {ACharacter::StaticClass()};
 	FTimerHandle UnusedHandle;
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	UBoxComponent*BoxComponent;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="Settings")
+	TArray<AActor*> ActorsInside;
 	// Sets default values for this character's properties
 	AEnemy();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
@@ -107,6 +114,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Cover")
 	void AimOut();
 	void SetCanShoot();
+	UFUNCTION(BlueprintCallable)
 	void MeleeAttack();
 
 	/** Broadcasted when character land on ground */

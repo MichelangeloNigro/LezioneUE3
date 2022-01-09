@@ -35,7 +35,7 @@ void APickable::OnTriggerEnter(AActor* overlappedActor, AActor* overlappingActor
 	if(overlappingActor->IsA(ACharacter::StaticClass()))
 	{
 		UHealthComponent* LifeManager;
-		LifeManager = Cast<UHealthComponent>(overlappingActor->GetComponentByClass(UHealthComponent::StaticClass())) ;
+		LifeManager = Cast<UHealthComponent>(overlappingActor->GetComponentByClass(UHealthComponent::StaticClass()));
 		check(LifeManager);
 		if (IsValid(LifeManager))
 		{

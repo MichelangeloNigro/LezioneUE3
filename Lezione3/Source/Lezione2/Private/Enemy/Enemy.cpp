@@ -10,7 +10,7 @@
 AEnemy::AEnemy()
 {
 	PrimaryActorTick.bCanEverTick = true;
-
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("UBoxComponent"));
 	// Set character movement 
 	GetCharacterMovement()->JumpZVelocity = 600.f;
 	GetCharacterMovement()->AirControl = 0.2f;
@@ -124,7 +124,6 @@ void AEnemy::FireWithSphereSweep()
 			canShot = false;
 			GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::SetCanShoot, WeaponSlot.Rate, false);
 		}
-	
 	}
 }
 
@@ -166,9 +165,23 @@ void AEnemy::UncrouchMe()
 	UnCrouch();
 	OnCharacterUncrouch.Broadcast();
 }
+
 void AEnemy::MeleeAttack()
 {
-	
+	GetOverlappingActors(ActorsInside,SensedClass);
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSlot.HitEFX,	ActorsInside[0]->GetActorLocation());
+	//AFP_FirstPersonCharacter* HitPlayer = Cast<AFP_FirstPersonCharacter>(.Actor.Get());
+	if (WeaponSlot.SoundEFX != nullptr)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, WeaponSlot.SoundEFX, GetActorLocation());
+	}
+	if (WeaponSlot.HitEFX != nullptr)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, WeaponSlot.HitEFX, ActorsInside[0]->GetTransform().GetLocation());
+	}
+		GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Hit! Player"));
+		Cast<AFP_FirstPersonCharacter>(ActorsInside[0])->GetHealthComponent()->AssignDamage(WeaponSlot.Damage);
 }
 
-//TODO funzione per fare melee, aggiustare distanza enemy
+
+//TODO funzione per fare melee

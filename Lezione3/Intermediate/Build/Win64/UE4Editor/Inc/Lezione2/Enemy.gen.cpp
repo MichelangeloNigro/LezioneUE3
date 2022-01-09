@@ -23,6 +23,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy() {}
 	LEZIONE2_API UClass* Z_Construct_UClass_AEnemy();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	LEZIONE2_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	LEZIONE2_API UClass* Z_Construct_UClass_AEnemyPath_NoRegister();
 // End Cross Module References
@@ -300,6 +303,13 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		*(UHealthComponent**)Z_Param__Result=P_THIS->GetHealthComponent();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AEnemy::execMeleeAttack)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->MeleeAttack();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AEnemy::execAimOut)
 	{
 		P_FINISH;
@@ -344,6 +354,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 			{ "CrouchMe", &AEnemy::execCrouchMe },
 			{ "FireWithSphereSweep", &AEnemy::execFireWithSphereSweep },
 			{ "GetHealthComponent", &AEnemy::execGetHealthComponent },
+			{ "MeleeAttack", &AEnemy::execMeleeAttack },
 			{ "UncrouchMe", &AEnemy::execUncrouchMe },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -481,6 +492,28 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AEnemy_MeleeAttack_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy, nullptr, "MeleeAttack", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AEnemy_MeleeAttack()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AEnemy_UncrouchMe_Statics
 	{
 #if WITH_METADATA
@@ -515,6 +548,19 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SensedClass_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_SensedClass;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BoxComponent_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BoxComponent;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ActorsInside_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ActorsInside_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_ActorsInside;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_canShot_MetaData[];
 #endif
@@ -590,6 +636,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		{ &Z_Construct_UFunction_AEnemy_CrouchMe, "CrouchMe" }, // 2971479500
 		{ &Z_Construct_UFunction_AEnemy_FireWithSphereSweep, "FireWithSphereSweep" }, // 838897655
 		{ &Z_Construct_UFunction_AEnemy_GetHealthComponent, "GetHealthComponent" }, // 1261897650
+		{ &Z_Construct_UFunction_AEnemy_MeleeAttack, "MeleeAttack" }, // 560519408
 		{ &Z_Construct_UFunction_AEnemy_UncrouchMe, "UncrouchMe" }, // 1041105599
 	};
 #if WITH_METADATA
@@ -599,6 +646,29 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_SensedClass_MetaData[] = {
+		{ "Category", "Settings" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_SensedClass = { "SensedClass", nullptr, (EPropertyFlags)0x0014000000000005, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, SensedClass), Z_Construct_UClass_AActor_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_SensedClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_SensedClass_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_BoxComponent_MetaData[] = {
+		{ "Category", "Enemy" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_BoxComponent = { "BoxComponent", nullptr, (EPropertyFlags)0x00100000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, BoxComponent), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_BoxComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_BoxComponent_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside_Inner = { "ActorsInside", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside_MetaData[] = {
+		{ "Category", "Settings" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside = { "ActorsInside", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, ActorsInside), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_MetaData[] = {
 		{ "Category", "Weapon" },
@@ -721,6 +791,10 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 #endif
 	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine = { "OnCharacterTraceLine", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, OnCharacterTraceLine), Z_Construct_UDelegateFunction_Lezione2_GameStateEnemy__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_SensedClass,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_BoxComponent,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_ActorsInside,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_canShot,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_AimOffset,
@@ -764,7 +838,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEnemy, 200093655);
+	IMPLEMENT_CLASS(AEnemy, 2591529766);
 	template<> LEZIONE2_API UClass* StaticClass<AEnemy>()
 	{
 		return AEnemy::StaticClass();
