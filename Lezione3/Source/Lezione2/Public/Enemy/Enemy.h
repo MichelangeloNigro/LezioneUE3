@@ -37,6 +37,14 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Offset;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int ShotsPerRate;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int FailureChance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int DamageReductionChance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MaxReductionPossible;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UParticleSystem* HitEFX;
@@ -52,9 +60,15 @@ class LEZIONE2_API AEnemy : public ACharacter
 GENERATED_BODY()
 
 public:
+	FTimerHandle UnusedHandle;
 	// Sets default values for this character's properties
 	AEnemy();
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	bool canShot=true;
+	bool FinishedRate=false;
+	UPROPERTY(VisibleAnywhere, Category="Weapon")
+	int CurrentRate=0;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
 	float AimOffset = 60.0f;
 
@@ -81,7 +95,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Damage")
 	void FireWithSphereSweep();
-
 	UFUNCTION(BlueprintCallable, Category = "Cover")
 	void CrouchMe();
 
@@ -93,6 +106,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Cover")
 	void AimOut();
+	void SetCanShoot();
+	void MeleeAttack();
 
 	/** Broadcasted when character land on ground */
 	UPROPERTY(BlueprintAssignable)

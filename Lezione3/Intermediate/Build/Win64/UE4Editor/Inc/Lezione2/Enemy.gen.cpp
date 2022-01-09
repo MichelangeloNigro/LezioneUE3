@@ -110,6 +110,22 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Offset;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ShotsPerRate_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ShotsPerRate;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FailureChance_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_FailureChance;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DamageReductionChance_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_DamageReductionChance;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MaxReductionPossible_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxReductionPossible;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HitEFX_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HitEFX;
@@ -191,6 +207,34 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_Offset = { "Offset", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FWeaponSlot, Offset), METADATA_PARAMS(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_Offset_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_Offset_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_ShotsPerRate_MetaData[] = {
+		{ "Category", "WeaponSlot" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_ShotsPerRate = { "ShotsPerRate", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FWeaponSlot, ShotsPerRate), METADATA_PARAMS(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_ShotsPerRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_ShotsPerRate_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_FailureChance_MetaData[] = {
+		{ "Category", "WeaponSlot" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_FailureChance = { "FailureChance", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FWeaponSlot, FailureChance), METADATA_PARAMS(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_FailureChance_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_FailureChance_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_DamageReductionChance_MetaData[] = {
+		{ "Category", "WeaponSlot" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_DamageReductionChance = { "DamageReductionChance", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FWeaponSlot, DamageReductionChance), METADATA_PARAMS(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_DamageReductionChance_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_DamageReductionChance_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_MaxReductionPossible_MetaData[] = {
+		{ "Category", "WeaponSlot" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_MaxReductionPossible = { "MaxReductionPossible", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FWeaponSlot, MaxReductionPossible), METADATA_PARAMS(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_MaxReductionPossible_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_MaxReductionPossible_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_HitEFX_MetaData[] = {
 		{ "Category", "WeaponSlot" },
 		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
@@ -213,6 +257,10 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_Range,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_HitRadius,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_Offset,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_ShotsPerRate,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_FailureChance,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_DamageReductionChance,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_MaxReductionPossible,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_HitEFX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FWeaponSlot_Statics::NewProp_SoundEFX,
 	};
@@ -244,7 +292,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FWeaponSlot_Hash() { return 417078061U; }
+	uint32 Get_Z_Construct_UScriptStruct_FWeaponSlot_Hash() { return 3858344839U; }
 	DEFINE_FUNCTION(AEnemy::execGetHealthComponent)
 	{
 		P_FINISH;
@@ -468,6 +516,15 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_canShot_MetaData[];
+#endif
+		static void NewProp_canShot_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_canShot;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CurrentRate_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_CurrentRate;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AimOffset_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_AimOffset;
@@ -542,6 +599,24 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_MetaData[] = {
+		{ "Category", "Weapon" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	void Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_SetBit(void* Obj)
+	{
+		((AEnemy*)Obj)->canShot = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_canShot = { "canShot", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AEnemy), &Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_SetBit, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_canShot_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate_MetaData[] = {
+		{ "Category", "Weapon" },
+		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate = { "CurrentRate", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, CurrentRate), METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Statics::NewProp_AimOffset_MetaData[] = {
 		{ "Category", "Weapon" },
@@ -646,6 +721,8 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 #endif
 	const UE4CodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine = { "OnCharacterTraceLine", nullptr, (EPropertyFlags)0x0010000010080000, UE4CodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy, OnCharacterTraceLine), Z_Construct_UDelegateFunction_Lezione2_GameStateEnemy__DelegateSignature, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Statics::NewProp_OnCharacterTraceLine_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_canShot,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_CurrentRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_AimOffset,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_WeaponSlot,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Statics::NewProp_WeaponMesh,
@@ -687,7 +764,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEnemy, 1931736436);
+	IMPLEMENT_CLASS(AEnemy, 200093655);
 	template<> LEZIONE2_API UClass* StaticClass<AEnemy>()
 	{
 		return AEnemy::StaticClass();

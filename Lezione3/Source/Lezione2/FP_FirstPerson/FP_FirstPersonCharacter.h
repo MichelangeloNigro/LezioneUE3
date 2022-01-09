@@ -48,7 +48,6 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
 	FWeaponSlot WeaponSlot;
-	
 	int MaxAmmo;
 	int CurrentAmmo;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)

@@ -21,15 +21,15 @@ class UHealthComponent;
 
 template<> LEZIONE2_API UScriptStruct* StaticStruct<struct FWeaponSlot>();
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_48_DELEGATE \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_56_DELEGATE \
 static inline void FGameStateEnemy_DelegateWrapper(const FMulticastScriptDelegate& GameStateEnemy) \
 { \
 	GameStateEnemy.ProcessMulticastDelegate<UObject>(NULL); \
 }
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_SPARSE_DATA
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_RPC_WRAPPERS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_SPARSE_DATA
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execAimOut); \
@@ -39,7 +39,7 @@ static inline void FGameStateEnemy_DelegateWrapper(const FMulticastScriptDelegat
 	DECLARE_FUNCTION(execFireWithSphereSweep);
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execGetHealthComponent); \
 	DECLARE_FUNCTION(execAimOut); \
@@ -49,7 +49,7 @@ static inline void FGameStateEnemy_DelegateWrapper(const FMulticastScriptDelegat
 	DECLARE_FUNCTION(execFireWithSphereSweep);
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_INCLASS_NO_PURE_DECLS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAEnemy(); \
 	friend struct Z_Construct_UClass_AEnemy_Statics; \
@@ -58,7 +58,7 @@ public: \
 	DECLARE_SERIALIZER(AEnemy)
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_INCLASS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_INCLASS \
 private: \
 	static void StaticRegisterNativesAEnemy(); \
 	friend struct Z_Construct_UClass_AEnemy_Statics; \
@@ -67,7 +67,7 @@ public: \
 	DECLARE_SERIALIZER(AEnemy)
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_STANDARD_CONSTRUCTORS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AEnemy(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AEnemy) \
@@ -80,7 +80,7 @@ private: \
 public:
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_ENHANCED_CONSTRUCTORS \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AEnemy(AEnemy&&); \
@@ -91,28 +91,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AEnemy)
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_PRIVATE_PROPERTY_OFFSET
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_49_PROLOG
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_GENERATED_BODY_LEGACY \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_PRIVATE_PROPERTY_OFFSET
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_57_PROLOG
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_PRIVATE_PROPERTY_OFFSET \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_SPARSE_DATA \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_RPC_WRAPPERS \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_INCLASS \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_STANDARD_CONSTRUCTORS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_PRIVATE_PROPERTY_OFFSET \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_SPARSE_DATA \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_RPC_WRAPPERS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_INCLASS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_GENERATED_BODY \
+#define Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_PRIVATE_PROPERTY_OFFSET \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_SPARSE_DATA \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_RPC_WRAPPERS_NO_PURE_DECLS \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_INCLASS_NO_PURE_DECLS \
-	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_52_ENHANCED_CONSTRUCTORS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_PRIVATE_PROPERTY_OFFSET \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_SPARSE_DATA \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_INCLASS_NO_PURE_DECLS \
+	Lezione3_Source_Lezione2_Public_Enemy_Enemy_h_60_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -19,13 +19,11 @@ DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 void AFP_FirstPersonCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	HealthComponent = Cast<UHealthComponent>(GetComponentByClass(UHealthComponent::StaticClass()));
-	check(HealthComponent);
+	setWeapon(WeaponSlot);
 	if (IsValid(HealthComponent))
 	{
 		HealthComponent->OnTakeDamage.AddDynamic(this, &AFP_FirstPersonCharacter::StampString);
 	}
-	setWeapon(WeaponSlot);
 }
 
 void AFP_FirstPersonCharacter::StampString()
@@ -41,6 +39,7 @@ AFP_FirstPersonCharacter::AFP_FirstPersonCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 
 	// Set our turn rates for input
 	BaseTurnRate = 45.f;
