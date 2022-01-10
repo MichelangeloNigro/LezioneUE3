@@ -1,9 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "FP_FirstPersonCharacter.h"
-
-#include <string>
-
 #include "Animation/AnimInstance.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -110,6 +107,7 @@ void AFP_FirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 void AFP_FirstPersonCharacter::OnFire()
 {
+	//fare timer per automatica.
 	// if (WeaponSlot.IsAutomatic)
 	// {
 	// 	while ()
@@ -290,6 +288,7 @@ FHitResult AFP_FirstPersonCharacter::WeaponTrace(const FVector& StartTrace, cons
 void AFP_FirstPersonCharacter::Reload()
 {
 	CurrentAmmo = MaxAmmo;
+	reloadAnim();
 	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red, "reloading");
 	IsReloading = false;
 }

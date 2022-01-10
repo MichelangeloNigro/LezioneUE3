@@ -92,6 +92,13 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	DEFINE_FUNCTION(AFP_FirstPersonCharacter::execReload)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Reload();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AFP_FirstPersonCharacter::execStampString)
 	{
 		P_FINISH;
@@ -107,10 +114,16 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		Parms.hasHitSomething=hasHitSomething ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_AFP_FirstPersonCharacter_PlayerHasShoot),&Parms);
 	}
+	static FName NAME_AFP_FirstPersonCharacter_reloadAnim = FName(TEXT("reloadAnim"));
+	void AFP_FirstPersonCharacter::reloadAnim()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AFP_FirstPersonCharacter_reloadAnim),NULL);
+	}
 	void AFP_FirstPersonCharacter::StaticRegisterNativesAFP_FirstPersonCharacter()
 	{
 		UClass* Class = AFP_FirstPersonCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "Reload", &AFP_FirstPersonCharacter::execReload },
 			{ "StampString", &AFP_FirstPersonCharacter::execStampString },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -138,9 +151,7 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::Function_MetaDataParams[] = {
-		{ "Comment", "// UPROPERTY(BlueprintAssignable)\n// FReloadEvent reload;\n" },
 		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
-		{ "ToolTip", "UPROPERTY(BlueprintAssignable)\nFReloadEvent reload;" },
 	};
 #endif
 	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFP_FirstPersonCharacter, nullptr, "PlayerHasShoot", nullptr, nullptr, sizeof(FP_FirstPersonCharacter_eventPlayerHasShoot_Parms), Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::Function_MetaDataParams)) };
@@ -150,6 +161,50 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFP_FirstPersonCharacter, nullptr, "Reload", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "FP_FirstPerson/FP_FirstPersonCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFP_FirstPersonCharacter, nullptr, "reloadAnim", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -260,7 +315,9 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Lezione2,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot, "PlayerHasShoot" }, // 1161968723
+		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_PlayerHasShoot, "PlayerHasShoot" }, // 3903988980
+		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_Reload, "Reload" }, // 2809552855
+		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_reloadAnim, "reloadAnim" }, // 406440337
 		{ &Z_Construct_UFunction_AFP_FirstPersonCharacter_StampString, "StampString" }, // 1963413074
 	};
 #if WITH_METADATA
@@ -272,6 +329,7 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 #endif
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Mesh" },
 		{ "Comment", "/** Pawn mesh: 1st person view (arms; seen only by self) */" },
 		{ "EditInline", "true" },
@@ -279,7 +337,7 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		{ "ToolTip", "Pawn mesh: 1st person view (arms; seen only by self)" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P = { "Mesh1P", nullptr, (EPropertyFlags)0x00400000000b0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, Mesh1P), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P = { "Mesh1P", nullptr, (EPropertyFlags)0x00400000000b001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFP_FirstPersonCharacter, Mesh1P), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_Mesh1P_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFP_FirstPersonCharacter_Statics::NewProp_FP_Gun_MetaData[] = {
 		{ "Category", "Mesh" },
@@ -456,7 +514,7 @@ void EmptyLinkFunctionForGeneratedCodeFP_FirstPersonCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFP_FirstPersonCharacter, 3445421967);
+	IMPLEMENT_CLASS(AFP_FirstPersonCharacter, 1194845117);
 	template<> LEZIONE2_API UClass* StaticClass<AFP_FirstPersonCharacter>()
 	{
 		return AFP_FirstPersonCharacter::StaticClass();

@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\miche\\Documents\\Scuola\\TheSign\\UE\\LezioneUE3\\Lezione3\\Source\\Lezione2\\Lezione2.Build.cs",
-		"C:\\Users\\miche\\Documents\\Scuola\\TheSign\\UE\\LezioneUE3\\Lezione3\\Source\\Lezione2.Target.cs",
-		"C:\\Users\\miche\\Documents\\Scuola\\TheSign\\UE\\LezioneUE3\\Lezione3\\Source\\Lezione2Editor.Target.cs"
+		"C:\\Users\\miche\\Documents\\scuola\\TheSign\\UE\\Lezione3UE\\LezioneUE3\\Lezione3\\Source\\Lezione2\\Lezione2.Build.cs",
+		"C:\\Users\\miche\\Documents\\scuola\\TheSign\\UE\\Lezione3UE\\LezioneUE3\\Lezione3\\Source\\Lezione2.Target.cs",
+		"C:\\Users\\miche\\Documents\\scuola\\TheSign\\UE\\Lezione3UE\\LezioneUE3\\Lezione3\\Source\\Lezione2Editor.Target.cs"
 	],
-	"EngineVersion": "4.27.2"
+	"EngineVersion": "4.27.1"
 }

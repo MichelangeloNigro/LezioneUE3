@@ -14,6 +14,7 @@ class USkeletalMeshComponent;
 class USoundBase;
 class UAnimMontage;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FPLayerEventTwo, AActor*, HitActor, bool, bHit);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FReloadEvent);
 
 UCLASS(config=Game)
@@ -22,7 +23,7 @@ class AFP_FirstPersonCharacter : public ACharacter
 	GENERATED_BODY()
 
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category=Mesh, meta=(AllowPrivateAccess="true"))
 	USkeletalMeshComponent* Mesh1P;
 
 	/** Gun mesh */
@@ -41,26 +42,26 @@ public:
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseTurnRate;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category= Gameplay)
 	FTimerHandle UnusedHandle;
 	UFUNCTION()
 	void StampString();
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
 	FWeaponSlot WeaponSlot;
 	int MaxAmmo;
 	int CurrentAmmo;
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category= Gameplay)
 	bool IsReloading;
-	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category= Gameplay)
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category= Gameplay)
 	float reloadTime;
-	
+
 	UPROPERTY(BlueprintAssignable)
 	FPLayerEventTwo OnHitActor;
 
-	// UPROPERTY(BlueprintAssignable)
-	// FReloadEvent reload;
+	UFUNCTION(BlueprintImplementableEvent)
+	 void reloadAnim();
 	
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayerHasShoot(AActor* actor, bool hasHitSomething);
@@ -68,7 +69,7 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
-	
+
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
 	FVector GunOffset;
@@ -84,13 +85,12 @@ public:
 	/* This is when calculating the trace to determine what the weapon has hit */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	float WeaponRange;
-	
+
 	/* This is multiplied by the direction vector when the weapon trace hits something to apply velocity to the component that is hit */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	float WeaponDamage;
 
 protected:
-
 	/** Handler for a touch input beginning. */
 	void TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location);
 
@@ -104,10 +104,13 @@ protected:
 	void MoveRight(float Val);
 
 	virtual void BeginPlay() override;
-
+	UFUNCTION(BlueprintCallable)
 	void Reload();
+	
 	void reloadTimer();
+	
 	void setWeapon(FWeaponSlot weapon);
+
 	/**
 	 * Called via input to turn at a given rate.
 	 * @param Rate	This is a normalized rate, i.e. 1.0 means 100% of desired turn rate
@@ -136,7 +139,12 @@ protected:
 	/** Structure that handles touch data so we can process the various stages of touch. */
 	struct TouchData
 	{
-		TouchData() { bIsPressed = false; Location = FVector::ZeroVector; }
+		TouchData()
+		{
+			bIsPressed = false;
+			Location = FVector::ZeroVector;
+		}
+
 		bool bIsPressed;
 		ETouchIndex::Type FingerIndex;
 		FVector Location;
@@ -151,7 +159,7 @@ protected:
 	 * @param	Location	Location of the touch
 	 */
 	void BeginTouch(const ETouchIndex::Type FingerIndex, const FVector Location);
-	
+
 	/*
 	 * Handle end touch event.
 	 * If there was no movement processed this will fire a projectile, otherwise this will reset pressed flag in the touch structure
@@ -160,7 +168,7 @@ protected:
 	 * @param	Location	Location of the touch
 	 */
 	void EndTouch(const ETouchIndex::Type FingerIndex, const FVector Location);
-	
+
 	/*
 	 * Handle touch update.
 	 * This will update the look position based on the change in touching position
@@ -171,8 +179,8 @@ protected:
 	void TouchUpdate(const ETouchIndex::Type FingerIndex, const FVector Location);
 
 	// Structure to handle touch updating
-	TouchData	TouchItem;
-	
+	TouchData TouchItem;
+
 	/* 
 	 * Configures input for touchscreen devices if there is a valid touch interface for doing so 
 	 *
@@ -188,4 +196,3 @@ public:
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 	FORCEINLINE class UHealthComponent* GetHealthComponent() const { return HealthComponent; }
 };
-
