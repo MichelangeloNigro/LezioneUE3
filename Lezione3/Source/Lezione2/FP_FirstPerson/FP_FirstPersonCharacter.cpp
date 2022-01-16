@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "FP_FirstPersonCharacter.h"
+
+#include <set>
+
 #include "Animation/AnimInstance.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -16,7 +19,7 @@ DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 void AFP_FirstPersonCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	setWeapon(WeaponSlot);
+	setWeapon(CurrentWeaponSlot);
 	if (IsValid(HealthComponent))
 	{
 		HealthComponent->OnTakeDamage.AddDynamic(this, &AFP_FirstPersonCharacter::StampString);
@@ -26,7 +29,8 @@ void AFP_FirstPersonCharacter::BeginPlay()
 void AFP_FirstPersonCharacter::StampString()
 {
 	//not raised??
-	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red,"Che Male, vita rimanente " + FString::FromInt(HealthComponent->currentLife));
+	GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red,
+	                                 "Che Male, vita rimanente " + FString::FromInt(HealthComponent->currentLife));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -61,14 +65,16 @@ AFP_FirstPersonCharacter::AFP_FirstPersonCharacter()
 	FP_Gun->bCastDynamicShadow = false; // Disallow mesh to cast dynamic shadows
 	FP_Gun->CastShadow = false; // Disallow mesh to cast other shadows
 	FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
-
+	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
+	WeaponMesh->AttachToComponent(Mesh1P, FAttachmentTransformRules::KeepRelativeTransform, "GripPoint");
 	// Set weapon damage and range
-	
+
 	// Default offset from the character location for projectiles to spawn
 	GunOffset = FVector(100.0f, 30.0f, 10.0f);
 
 	// Note: The ProjectileClass and the skeletal mesh/anim blueprints for Mesh1P are set in the
 	// derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -85,6 +91,7 @@ void AFP_FirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &AFP_FirstPersonCharacter::reloadTimer);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &AFP_FirstPersonCharacter::stopShooting);
 
 	// Bind fire event
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFP_FirstPersonCharacter::OnFire);
@@ -103,6 +110,19 @@ void AFP_FirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	PlayerInputComponent->BindAxis("TurnRate", this, &AFP_FirstPersonCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AFP_FirstPersonCharacter::LookUpAtRate);
+	PlayerInputComponent->BindAction("Weapon1", IE_Pressed, this, &AFP_FirstPersonCharacter::setWeapon1);
+	PlayerInputComponent->BindAction("Weapon2", IE_Pressed, this, &AFP_FirstPersonCharacter::setWeapon2);
+	PlayerInputComponent->BindAction("Weapon3", IE_Pressed, this, &AFP_FirstPersonCharacter::setWeapon3);
+}
+
+
+void AFP_FirstPersonCharacter::stopShooting()
+{
+	if (CurrentWeaponSlot.IsAutomatic)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 6.f, FColor::Red, "automatic gun stop");
+		GetWorldTimerManager().ClearTimer(Handle2);
+	}
 }
 
 void AFP_FirstPersonCharacter::OnFire()
@@ -169,6 +189,11 @@ void AFP_FirstPersonCharacter::OnFire()
 	else if (CurrentAmmo == 0)
 	{
 		reloadTimer();
+	}
+	if (CurrentWeaponSlot.IsAutomatic)
+	{
+		GetWorldTimerManager().SetTimer(Handle2, this, &AFP_FirstPersonCharacter::OnFire, CurrentWeaponSlot.Rate,
+		                                false);
 	}
 }
 
@@ -295,7 +320,7 @@ void AFP_FirstPersonCharacter::Reload()
 
 void AFP_FirstPersonCharacter::reloadTimer()
 {
-	if (CurrentAmmo==MaxAmmo)
+	if (CurrentAmmo == MaxAmmo)
 	{
 		return;
 	}
@@ -311,9 +336,60 @@ void AFP_FirstPersonCharacter::setWeapon(FWeaponSlot WeaponToCopy)
 {
 	WeaponRange = WeaponToCopy.Range;
 	WeaponDamage = WeaponToCopy.Damage;
-	MaxAmmo=WeaponToCopy.MagCapacity;
-	CurrentAmmo=WeaponToCopy.MagCapacity;
+	MaxAmmo = WeaponToCopy.MagCapacity;
+	CurrentAmmo = WeaponToCopy.MagCapacity;
+	CurrentWeaponSlot=WeaponToCopy;
 	IsReloading = false;
+	WeaponMesh->SetStaticMesh(WeaponToCopy.WeaponMesh);
+	WeaponMesh->AttachToComponent(Mesh1P, FAttachmentTransformRules::KeepRelativeTransform, "GripPoint");
+
+}
+
+// void AFP_FirstPersonCharacter::setWeapon(int index)
+// {
+// 	switch (index)
+// 	{
+// 	case 1:
+// 		
+//
+// 			WeaponRange = arsenal[0].Range;
+// 			WeaponDamage = arsenal[0].Damage;
+// 			MaxAmmo = arsenal[0].MagCapacity;
+// 			CurrentAmmo = arsenal[0].MagCapacity;
+// 			IsReloading = false;
+// 			break;
+// 		
+// 	case 2:
+// 		WeaponRange = arsenal[1].Range;
+// 		WeaponDamage = arsenal[1].Damage;
+// 		MaxAmmo = arsenal[1].MagCapacity;
+// 		CurrentAmmo = arsenal[1].MagCapacity;
+// 		IsReloading = false;
+// 		break;
+// 	case 3:
+// 		WeaponRange = arsenal[2].Range;
+// 		WeaponDamage = arsenal[2].Damage;
+// 		MaxAmmo = arsenal[2].MagCapacity;
+// 		CurrentAmmo = arsenal[2].MagCapacity;
+// 		IsReloading = false;
+// 		break;
+// 	}
+//
+// }
+
+void AFP_FirstPersonCharacter::setWeapon1()
+{
+	setWeapon(arsenal[0]);
+}
+
+void AFP_FirstPersonCharacter::setWeapon2()
+{
+	setWeapon(arsenal[1]);
+}
+
+void AFP_FirstPersonCharacter::setWeapon3()
+{
+	setWeapon(arsenal[2]);
 }
 
 

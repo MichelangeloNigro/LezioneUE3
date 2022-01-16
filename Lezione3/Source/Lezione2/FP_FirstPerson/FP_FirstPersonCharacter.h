@@ -44,11 +44,16 @@ public:
 	float BaseTurnRate;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category= Gameplay)
 	FTimerHandle UnusedHandle;
+	FTimerHandle Handle2;
 	UFUNCTION()
 	void StampString();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* WeaponMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
-	FWeaponSlot WeaponSlot;
+	FWeaponSlot CurrentWeaponSlot;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	TArray<FWeaponSlot> arsenal;
 	int MaxAmmo;
 	int CurrentAmmo;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category= Gameplay)
@@ -110,6 +115,11 @@ protected:
 	void reloadTimer();
 	
 	void setWeapon(FWeaponSlot weapon);
+	void setWeapon1();
+	void setWeapon2();
+	void setWeapon3();
+	void setWeapon4();
+	void stopShooting();
 
 	/**
 	 * Called via input to turn at a given rate.

@@ -1,9 +1,9 @@
-C:\Users\miche\Documents\scuola\TheSign\UE\Lezione3UE\LezioneUE3\Lezione3\Intermediate\Build\Win64\UE4Editor\Development\Lezione2\Definitions.Lezione2.h
+C:\Users\miche\Documents\Scuola\TheSign\UE\LezioneUE3\Lezione3\Intermediate\Build\Win64\UE4Editor\Development\Lezione2\Definitions.Lezione2.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\miche\Documents\scuola\TheSign\UE\Lezione3UE\LezioneUE3\Lezione3\Source\Lezione2/Public/FP_FirstPerson/Pickable.h
+C:\Users\miche\Documents\Scuola\TheSign\UE\LezioneUE3\Lezione3\Source\Lezione2/Public/FP_FirstPerson/Pickable.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
-C:\Users\miche\Documents\scuola\TheSign\UE\Lezione3UE\LezioneUE3\Lezione3\Intermediate\Build\Win64\UE4Editor\Inc\Lezione2\Pickable.generated.h
+C:\Users\miche\Documents\Scuola\TheSign\UE\LezioneUE3\Lezione3\Intermediate\Build\Win64\UE4Editor\Inc\Lezione2\Pickable.generated.h

@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "Lezione2",
-			"Path": "C:\\Users\\miche\\Documents\\scuola\\TheSign\\UE\\Lezione3UE\\LezioneUE3\\Lezione3\\Source\\Lezione2.Target.cs",
+			"Path": "C:\\Users\\miche\\Documents\\Scuola\\TheSign\\UE\\LezioneUE3\\Lezione3\\Source\\Lezione2.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "Lezione2Editor",
-			"Path": "C:\\Users\\miche\\Documents\\scuola\\TheSign\\UE\\Lezione3UE\\LezioneUE3\\Lezione3\\Source\\Lezione2Editor.Target.cs",
+			"Path": "C:\\Users\\miche\\Documents\\Scuola\\TheSign\\UE\\LezioneUE3\\Lezione3\\Source\\Lezione2Editor.Target.cs",
 			"Type": "Editor"
 		}
 	]
