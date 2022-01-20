@@ -1,9 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "FP_FirstPersonCharacter.h"
-
-#include <set>
-
 #include "Animation/AnimInstance.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -11,10 +8,7 @@
 #include "FP_FirstPerson/HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
-
 #define COLLISION_WEAPON		ECC_GameTraceChannel1
-
-DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 void AFP_FirstPersonCharacter::BeginPlay()
 {
