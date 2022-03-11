@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Lezione2.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{6A9C467A-48C4-466E-B39B-CE2415CC892D}</UniqueIdentifier>
+      <UniqueIdentifier>{D05E5A1D-1FB2-4672-8D23-BE9C78D42027}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Lezione2.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,9 @@
     <None Include="..\..\Source\Lezione2Editor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\PhotoR_Backgrounds.png" />
     <Filter Include="Config">
-      <UniqueIdentifier>{7E4087D5-60B1-472F-A62B-4211C4A405EC}</UniqueIdentifier>
+      <UniqueIdentifier>{609CA6A1-3435-468D-A110-76E50D6F6B41}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +28,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Lezione2">
-      <UniqueIdentifier>{0E12ED94-7AFD-467B-99CD-B4A7470CEEE8}</UniqueIdentifier>
+      <UniqueIdentifier>{1878A503-FFBF-45BE-A580-F16D8E202C64}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Lezione2\Lezione2.Build.cs">
       <Filter>Source\Lezione2</Filter>
@@ -45,7 +46,7 @@
       <Filter>Source\Lezione2</Filter>
     </ClInclude>
     <Filter Include="Source\Lezione2\FP_FirstPerson">
-      <UniqueIdentifier>{5457E8BF-E5B5-4EF7-9BBE-1728972469AB}</UniqueIdentifier>
+      <UniqueIdentifier>{165B4C5D-6AF3-445B-83BB-5D3361501EC8}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPerson.h">
       <Filter>Source\Lezione2\FP_FirstPerson</Filter>
@@ -68,11 +69,17 @@
     <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\FP_FirstPersonHUD.h">
       <Filter>Source\Lezione2\FP_FirstPerson</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Lezione2\FP_FirstPerson\MyActor.cpp">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Lezione2\FP_FirstPerson\MyActor.h">
+      <Filter>Source\Lezione2\FP_FirstPerson</Filter>
+    </ClInclude>
     <Filter Include="Source\Lezione2\Private">
-      <UniqueIdentifier>{E0572B11-3A7F-4E60-92FD-FB546C5B05EB}</UniqueIdentifier>
+      <UniqueIdentifier>{E09B41A8-EC08-4981-A88C-8FF477E8A022}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Lezione2\Private\Enemy">
-      <UniqueIdentifier>{629B516B-07EA-41F9-ACEE-FF937C26EED8}</UniqueIdentifier>
+      <UniqueIdentifier>{7EF29DB1-58E2-44FD-A1BF-B8EA42842B4C}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Lezione2\Private\Enemy\Enemy.cpp">
       <Filter>Source\Lezione2\Private\Enemy</Filter>
@@ -81,7 +88,7 @@
       <Filter>Source\Lezione2\Private\Enemy</Filter>
     </ClCompile>
     <Filter Include="Source\Lezione2\Private\FP_FirstPerson">
-      <UniqueIdentifier>{88E888B3-D1A0-4977-AFC8-85F629014E00}</UniqueIdentifier>
+      <UniqueIdentifier>{D7D5F5CF-257E-4028-8615-B86AE84ABE84}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Lezione2\Private\FP_FirstPerson\HealthComponent.cpp">
       <Filter>Source\Lezione2\Private\FP_FirstPerson</Filter>
@@ -90,10 +97,10 @@
       <Filter>Source\Lezione2\Private\FP_FirstPerson</Filter>
     </ClCompile>
     <Filter Include="Source\Lezione2\Public">
-      <UniqueIdentifier>{296D7B57-99E5-48DB-9C3D-4844B1D83C8F}</UniqueIdentifier>
+      <UniqueIdentifier>{651A8246-4A7F-4801-8B9D-86F08B168BA5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Lezione2\Public\Enemy">
-      <UniqueIdentifier>{4A7269D2-5F44-4F98-BBB8-12AC1B19684D}</UniqueIdentifier>
+      <UniqueIdentifier>{25268ADA-5DEB-4DCD-BFD7-9F659CCF5463}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Lezione2\Public\Enemy\Enemy.h">
       <Filter>Source\Lezione2\Public\Enemy</Filter>
@@ -102,7 +109,7 @@
       <Filter>Source\Lezione2\Public\Enemy</Filter>
     </ClInclude>
     <Filter Include="Source\Lezione2\Public\FP_FirstPerson">
-      <UniqueIdentifier>{861C4627-E90F-49F0-ADED-BCF77B38241E}</UniqueIdentifier>
+      <UniqueIdentifier>{66FADF45-CAC4-4859-9879-DA43A7DAA7DA}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\Lezione2\Public\FP_FirstPerson\HealthComponent.h">
       <Filter>Source\Lezione2\Public\FP_FirstPerson</Filter>

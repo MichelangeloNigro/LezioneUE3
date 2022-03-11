@@ -307,7 +307,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->MeleeAttack();
+		*(bool*)Z_Param__Result=P_THIS->MeleeAttack();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(AEnemy::execAimOut)
@@ -494,17 +494,32 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 	}
 	struct Z_Construct_UFunction_AEnemy_MeleeAttack_Statics
 	{
+		struct Enemy_eventMeleeAttack_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((Enemy_eventMeleeAttack_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(Enemy_eventMeleeAttack_Parms), &Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::NewProp_ReturnValue,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/Enemy/Enemy.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy, nullptr, "MeleeAttack", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy, nullptr, "MeleeAttack", nullptr, nullptr, sizeof(Enemy_eventMeleeAttack_Parms), Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_MeleeAttack_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_AEnemy_MeleeAttack()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -636,7 +651,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		{ &Z_Construct_UFunction_AEnemy_CrouchMe, "CrouchMe" }, // 2971479500
 		{ &Z_Construct_UFunction_AEnemy_FireWithSphereSweep, "FireWithSphereSweep" }, // 838897655
 		{ &Z_Construct_UFunction_AEnemy_GetHealthComponent, "GetHealthComponent" }, // 1261897650
-		{ &Z_Construct_UFunction_AEnemy_MeleeAttack, "MeleeAttack" }, // 560519408
+		{ &Z_Construct_UFunction_AEnemy_MeleeAttack, "MeleeAttack" }, // 1379451880
 		{ &Z_Construct_UFunction_AEnemy_UncrouchMe, "UncrouchMe" }, // 1041105599
 	};
 #if WITH_METADATA
@@ -838,7 +853,7 @@ static struct FScriptStruct_Lezione2_StaticRegisterNativesFWeaponSlot
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEnemy, 2591529766);
+	IMPLEMENT_CLASS(AEnemy, 1511874605);
 	template<> LEZIONE2_API UClass* StaticClass<AEnemy>()
 	{
 		return AEnemy::StaticClass();

@@ -37,6 +37,7 @@ void AEnemy::BeginPlay()
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	GetOverlappingActors(ActorsInside,SensedClass);
 }
 
 void AEnemy::OnConstruction(const FTransform& Transform)
@@ -102,7 +103,7 @@ void AEnemy::FireWithSphereSweep()
 
 			if (HitPlayer)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Hit! Player"));
+				GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Hit! with gun"));
 				HitPlayer->GetHealthComponent()->AssignDamage(damage);
 			}
 			else
@@ -166,21 +167,26 @@ void AEnemy::UncrouchMe()
 	OnCharacterUncrouch.Broadcast();
 }
 
-void AEnemy::MeleeAttack()
+bool AEnemy::MeleeAttack()
 {
-	GetOverlappingActors(ActorsInside,SensedClass);
-	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSlot.HitEFX,	ActorsInside[0]->GetActorLocation());
 	//AFP_FirstPersonCharacter* HitPlayer = Cast<AFP_FirstPersonCharacter>(.Actor.Get());
-	if (WeaponSlot.SoundEFX != nullptr)
+	if (ActorsInside.IsValidIndex(0))
 	{
-		UGameplayStatics::PlaySoundAtLocation(this, WeaponSlot.SoundEFX, GetActorLocation());
-	}
-	if (WeaponSlot.HitEFX != nullptr)
-	{
-		UGameplayStatics::SpawnEmitterAtLocation(this, WeaponSlot.HitEFX, ActorsInside[0]->GetTransform().GetLocation());
-	}
-		GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Hit! Player"));
+		
+	
+		if (WeaponSlot.SoundEFX != nullptr)
+		{
+			UGameplayStatics::PlaySoundAtLocation(this, WeaponSlot.SoundEFX, GetActorLocation());
+		}
+		if (WeaponSlot.HitEFX != nullptr)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, WeaponSlot.HitEFX, ActorsInside[0]->GetTransform().GetLocation());
+		}
+		GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("Melee"));
 		Cast<AFP_FirstPersonCharacter>(ActorsInside[0])->GetHealthComponent()->AssignDamage(WeaponSlot.Damage);
+		return true;
+	}
+	return false;
 }
 
 

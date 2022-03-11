@@ -31,7 +31,7 @@ void EmptyLinkFunctionForGeneratedCodeLezione2_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x5812325F,
+				0x1F7C3E3F,
 				0xA0E46FEE,
 				METADATA_PARAMS(nullptr, 0)
 			};

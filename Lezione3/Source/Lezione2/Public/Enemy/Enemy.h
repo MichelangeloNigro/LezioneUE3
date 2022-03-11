@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
 #include "CoreMinimal.h"
 #include "EnemyPath.h"
 #include "Components/BoxComponent.h"
 #include "FP_FirstPerson/HealthComponent.h"
 #include "GameFramework/Character.h"
 #include "Enemy.generated.h"
+
 
 USTRUCT(BlueprintType)
 struct FWeaponSlot
@@ -115,7 +115,7 @@ public:
 	void AimOut();
 	void SetCanShoot();
 	UFUNCTION(BlueprintCallable)
-	void MeleeAttack();
+	bool MeleeAttack();
 
 	/** Broadcasted when character land on ground */
 	UPROPERTY(BlueprintAssignable)
